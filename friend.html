@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>Официальный сайт легенды</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #0b0b0f;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* ===== НЕОНОВЫЕ АКЦЕНТЫ ===== */
+    .neon-border {
+      border: 2px solid #b76eff;
+      box-shadow: 0 0 12px #b76eff66, inset 0 0 8px #b76eff33;
+    }
+
+    .neon-text {
+      color: #b76eff;
+      text-shadow: 0 0 8px #b76effaa, 0 0 20px #b76eff55;
+    }
+
+    .neon-green {
+      border-color: #39ff14;
+      box-shadow: 0 0 12px #39ff1466, inset 0 0 8px #39ff1433;
+    }
+
+    .neon-green-text {
+      color: #39ff14;
+      text-shadow: 0 0 8px #39ff14aa, 0 0 20px #39ff1455;
+    }
+
+    /* ===== ШАПКА ===== */
+    .header {
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+      background: #12121a;
+      border-radius: 2.5rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #2a2a3a;
+      box-shadow: 0 0 30px #00000088;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #1a1a28;
+      margin: 0 auto 1.2rem;
+      border: 4px solid #b76eff;
+      box-shadow: 0 0 30px #b76eff77, inset 0 0 20px #b76eff22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #b76eff;
+      transition: 0.25s ease;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="40" r="24" fill="%23b76eff33"/><circle cx="50" cy="80" r="30" fill="%23b76eff22"/></svg>');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+
+    .avatar:hover {
+      transform: scale(1.02);
+      border-color: #39ff14;
+      box-shadow: 0 0 40px #39ff1477, inset 0 0 30px #39ff1422;
+    }
+
+    .main-title {
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, #b76eff 0%, #d9a6ff 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px #b76eff55;
+      margin-bottom: 0.3rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: #b0b0c8;
+      background: #1c1c2a;
+      display: inline-block;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      border: 1px solid #3a3a50;
+      backdrop-filter: blur(4px);
+      margin-top: 0.25rem;
+      letter-spacing: 0.3px;
+    }
+
+    .subtitle span {
+      color: #39ff14;
+      font-weight: 600;
+      text-shadow: 0 0 12px #39ff1477;
+    }
+
+    /* ===== КАРТОЧКИ (ИГРОВОЙ ПРОФИЛЬ) ===== */
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 700;
+      margin: 2.8rem 0 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 6px solid #b76eff;
+      padding-left: 1rem;
+      text-shadow: 0 0 20px #b76eff33;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: #14141e;
+      border-radius: 2rem;
+      padding: 1.8rem 1.5rem 2rem;
+      border: 1px solid #2a2a40;
+      backdrop-filter: blur(2px);
+      transition: all 0.25s ease;
+      box-shadow: 0 12px 28px #00000055;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #b76eff;
+      box-shadow: 0 0 30px #b76eff33, 0 12px 40px #00000088;
+    }
+
+    .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      background: #1e1e30;
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      border: 1px solid #3a3a58;
+    }
+
+    .card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem;
+      letter-spacing: -0.3px;
+    }
+
+    .card p {
+      color: #b8b8d0;
+      line-height: 1.5;
+      margin: 0.5rem 0 1.2rem;
+      font-size: 0.98rem;
+    }
+
+    .skill-bar {
+      background: #1f1f2e;
+      border-radius: 40px;
+      height: 20px;
+      width: 100%;
+      margin-top: 0.5rem;
+      border: 1px solid #33334a;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px #00000077;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: 40px;
+      width: 0%;
+      background: linear-gradient(90deg, #b76eff, #a855f7);
+      box-shadow: 0 0 20px #b76eff88;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 6px #000000dd;
+      transition: width 0.6s ease;
+    }
+
+    .skill-fill.green {
+      background: linear-gradient(90deg, #39ff14, #7dff4a);
+      box-shadow: 0 0 20px #39ff1488;
+    }
+
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #c8c8e0;
+      margin-top: 0.4rem;
+    }
+
+    /* ===== СТАТИСТИКА ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .stat-item {
+      background: #12121c;
+      padding: 1.8rem 0.8rem;
+      border-radius: 2rem;
+      text-align: center;
+      border: 1px solid #28283e;
+      box-shadow: 0 0 20px #00000044;
+      transition: 0.2s;
+    }
+
+    .stat-item:hover {
+      border-color: #39ff14;
+      box-shadow: 0 0 30px #39ff1433;
+    }
+
+    .stat-number {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #b76eff, #d9a6ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: block;
+      line-height: 1.2;
+      text-shadow: 0 0 30px #b76eff55;
+    }
+
+    .stat-number.green-stat {
+      background: linear-gradient(135deg, #39ff14, #a0ff7a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px #39ff1466;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #b0b0cc;
+      margin-top: 0.3rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== СТЕНА ЦИТАТ ===== */
+    .chat-wall {
+      background: #10101a;
+      border-radius: 2rem;
+      padding: 1.8rem 1.5rem;
+      margin: 2rem 0 2.5rem;
+      border: 1px solid #2a2a42;
+      box-shadow: inset 0 0 30px #00000066, 0 0 20px #b76eff11;
+    }
+
+    .chat-msg {
+      background: #1a1a2a;
+      border-radius: 1.2rem;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 6px solid #b76eff;
+      box-shadow: 0 4px 12px #00000044;
+      transition: 0.15s;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .chat-msg:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-msg:hover {
+      border-left-color: #39ff14;
+      background: #1f1f32;
+      transform: scale(1.01);
+    }
+
+    .chat-avatar-small {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #29294a;
+      border: 2px solid #b76eff77;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #b76eff;
+      box-shadow: 0 0 16px #b76eff33;
+    }
+
+    .chat-content {
+      flex: 1;
+    }
+
+    .chat-name {
+      font-weight: 700;
+      color: #d0d0f0;
+      display: inline-block;
+      margin-right: 0.6rem;
+    }
+
+    .chat-time {
+      color: #7777aa;
+      font-size: 0.75rem;
+    }
+
+    .chat-text {
+      font-size: 1rem;
+      color: #d4d4ec;
+      margin-top: 0.2rem;
+      word-break: break-word;
+    }
+
+    .chat-text .highlight {
+      color: #39ff14;
+      font-weight: 600;
+      text-shadow: 0 0 12px #39ff1466;
+    }
+
+    .chat-text .purple {
+      color: #b76eff;
+      font-weight: 600;
+    }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 600px) {
+      body { padding: 0.8rem; }
+      .header { padding: 1.5rem 0.5rem; border-radius: 1.8rem; }
+      .avatar { width: 96px; height: 96px; }
+      .card { padding: 1.2rem; }
+      .stat-item { padding: 1.2rem 0.4rem; }
+      .chat-msg { padding: 0.8rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ШАПКА -->
+    <header class="header">
+      <div class="avatar" title="Тут будет фото друга"></div>
+      <h1 class="main-title">Официальный сайт легенды</h1>
+      <div class="subtitle">
+        Тут могла быть ваша реклама, но здесь обитает <span>QMiller</span>
+      </div>
+    </header>
+
+    <!-- ИГРОВОЙ ПРОФИЛЬ -->
+    <h2 class="section-title">🎮 Игровой профиль</h2>
+    <div class="card-grid">
+
+      <!-- Roblox -->
+      <div class="card">
+        <div class="card-icon">🟣 Roblox</div>
+        <h3>Главный эксперт</h3>
+        <p>по фановым режимам и выживанию в симуляторах</p>
+        <div class="skill-label">
+          <span>🏃 Бег от нубов</span>
+          <span>100/10</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" style="width: 100%;">💪</div>
+        </div>
+        <div style="margin-top: 0.7rem; color: #b76eff; font-size: 0.85rem; opacity: 0.8;">✦ ультимативный скилл</div>
+      </div>
+
+      <!-- Мир Танков -->
+      <div class="card">
+        <div class="card-icon">🟢 World of Tanks</div>
+        <h3>Мастер кустов</h3>
+        <p>стояние на базе 1 класса и тактическое ожидание</p>
+        <div class="skill-label">
+          <span>💥 Слив катки за 3 минуты</span>
+          <span>Эпический уровень</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill green" style="width: 98%;">🔥</div>
+        </div>
+        <div style="margin-top: 0.7rem; color: #39ff14; font-size: 0.85rem; opacity: 0.8;">✦ легендарный скилл</div>
+      </div>
+    </div>
+
+    <!-- СТАТИСТИКА -->
+    <h2 class="section-title" style="margin-top: 3rem;">📊 Наша совместная статистика</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">1000+</span>
+        <div class="stat-label">Сыграно каток вместе</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number green-stat">999</span>
+        <div class="stat-label">Слито раундов по глупости</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" style="background: linear-gradient(135deg, #ff9a76, #ff6b6b); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 30px #ff6b6b66;">∞</span>
+        <div class="stat-label">Случайных подрывов друг друга: <span style="color: #ff9a76;">Бесценно</span></div>
+      </div>
+    </div>
+
+    <!-- СТЕНА ЦИТАТ -->
+    <h2 class="section-title">💬 Стена цитат &amp; мемов</h2>
+    <div class="chat-wall">
+
+      <div class="chat-msg">
+        <div class="chat-avatar-small">👾</div>
+        <div class="chat-content">
+          <div><span class="chat-name">НубоКиллер_2007</span> <span class="chat-time">сегодня в 23:14</span></div>
+          <div class="chat-text">«Да блин, как он меня <span class="purple">пробил</span>?!»</div>
+        </div>
+      </div>
+
+      <div class="chat-msg">
+        <div class="chat-avatar-small">🎮</div>
+        <div class="chat-content">
+          <div><span class="chat-name">Криповый_чел</span> <span class="chat-time">вчера в 18:42</span></div>
+          <div class="chat-text">«Погнали в роблоксе в тот <span class="highlight">кринжовый плейс</span>»</div>
+        </div>
+      </div>
+
+      <div class="chat-msg">
+        <div class="chat-avatar-small">📄</div>
+        <div class="chat-content">
+          <div><span class="chat-name">Паспортный_мастер</span> <span class="chat-time">вчера в 09:07</span></div>
+          <div class="chat-text">«Я паспорт искал, поэтому из сети вышел»</div>
+        </div>
+      </div>
+
+      <!-- добавим ещё пару мемных фраз для атмосферы -->
+      <div class="chat-msg" style="border-left-color: #39ff14;">
+        <div class="chat-avatar-small" style="border-color: #39ff1477;">🔥</div>
+        <div class="chat-content">
+          <div><span class="chat-name">Танкист_на_базе</span> <span class="chat-time">сегодня в 01:23</span></div>
+          <div class="chat-text">«<span class="highlight">Стою в кустах</span>, жду, когда вы сольётесь»</div>
+        </div>
+      </div>
+
+      <div class="chat-msg" style="border-left-color: #ffb347;">
+        <div class="chat-avatar-small" style="border-color: #ffb34777;">💀</div>
+        <div class="chat-content">
+          <div><span class="chat-name">Случайный_взрыв</span> <span class="chat-time">сегодня в 02:56</span></div>
+          <div class="chat-text">«Ты че меня <span class="purple">подорвал</span>?! — А это была граната...»</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- небольшой футер (для завершённости) -->
+    <div style="text-align: center; padding: 1.2rem 0 0.2rem; opacity: 0.5; font-size: 0.75rem; border-top: 1px solid #22223a; margin-top: 1rem;">
+      <span style="color: #b76eff;">✦</span> создано с мемным вайбом <span style="color: #39ff14;">✦</span>
+    </div>
+  </div>
+
+  <!-- ПРОСТОЙ ИНТЕРАКТИВ (JS) – неоновая анимация при загрузке -->
+  <script>
+    (function() {
+      // Добавим игровой "эффект" – при наведении на цифры статистики они слегка подсвечиваются,
+      // а также сделаем появление скилл-баров с анимацией после загрузки (уже есть width, но добавим эффект)
+      console.log('💥 Официальный сайт легенды загружен!');
+
+      // Небольшой интерактив: при клике на аватарку – сообщение
+      const avatar = document.querySelector('.avatar');
+      if (avatar) {
+        avatar.addEventListener('click', function(e) {
+          e.preventDefault();
+          const msgs = [
+            '👾 Тыкнул по аватарке!',
+            '🌟 Сюда будет фото легенды!',
+            '🔥 Неоновая рамка загружена!',
+            '💜 Имя друга скоро тут появится'
+          ];
+          const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+          alert(randomMsg);
+        });
+      }
+
+      // Эффект "пульсации" для неоновых заголовков (добавим классы)
+      const titles = document.querySelectorAll('.main-title, .section-title');
+      titles.forEach((el, idx) => {
+        el.addEventListener('mouseenter', function() {
+          this.style.transition = 'text-shadow 0.2s';
+          this.style.textShadow = '0 0 40px #b76effaa, 0 0 80px #b76eff44';
+        });
+        el.addEventListener('mouseleave', function() {
+          this.style.textShadow = '';
+        });
+      });
+
+      // Дополнительно: скилл-бары "дёргаются" при наведении на карточку
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          const fill = this.querySelector('.skill-fill');
+          if (fill) {
+            fill.style.filter = 'brightness(1.3) drop-shadow(0 0 10px #b76eff)';
+          }
+        });
+        card.addEventListener('mouseleave', function() {
+          const fill = this.querySelector('.skill-fill');
+          if (fill) {
+            fill.style.filter = '';
+          }
+        });
+      });
+
+      // Увеличим цифры статистики при клике (шуточный эффект)
+      const statNumbers = document.querySelectorAll('.stat-number');
+      statNumbers.forEach(num => {
+        num.addEventListener('click', function() {
+          this.style.transform = 'scale(1.1)';
+          this.style.transition = 'transform 0.15s';
+          setTimeout(() => {
+            this.style.transform = 'scale(1)';
+          }, 200);
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
